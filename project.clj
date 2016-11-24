@@ -12,6 +12,7 @@
                   org.clojure/core.incubator
                   org.apache.httpcomponents/httpclient]]
     [com.cemerick/friend "0.2.3" :exclusions [ring/ring-core]]
+    [com.cemerick/url "0.1.1"]
     [friend-oauth2 "0.1.3"
      :exclusions [org.apache.httpcomponents/httpcore
                   clj-http]]
@@ -22,12 +23,16 @@
      :exclusions [ring]]]
   :profiles {
     :dev {:plugins [[lein-ring "0.10.0" :exclusions [org.clojure/clojure]]]}
-    :appdotnet {:ring {:handler friend-oauth2-examples.appdotnet-handler/app}}
-    :facebook {:ring {:handler friend-oauth2-examples.facebook-handler/app}}
-    :github {:ring {:handler friend-oauth2-examples.github-handler/app :port 8999}}
-    :google {:ring {:handler friend-oauth2-examples.google-handler/app}}}
+    :appdotnet {:ring {:handler friend-oauth2-examples.appdotnet-handler/app
+                       :port 8999}}
+    :facebook {:ring {:handler friend-oauth2-examples.facebook-handler/app
+                      :port 8999}}
+    :github {:ring {:handler friend-oauth2-examples.github-handler/app
+                    :port 8999}}
+    :google {:ring {:handler friend-oauth2-examples.google-handler/app
+                    :port 8999}}}
   :aliases {
-    "facebook" ["with-profile" "dev,facebook" "do" "ring" "server-headless"]
-    "appdotnet" ["with-profile" "dev,appdotnet" "do" "ring" "server-headless"]
-    "github" ["with-profile" "dev,github" "do" "ring" "server-headless"]
-    "google" ["with-profile" "dev,google" "do" "ring" "server-headless"]})
+    "facebook" ["with-profile" "facebook" "do" "ring" "server-headless"]
+    "appdotnet" ["with-profile" "appdotnet" "do" "ring" "server-headless"]
+    "github" ["with-profile" "github" "do" "ring" "server-headless"]
+    "google" ["with-profile" "google" "do" "ring" "server-headless"]})
