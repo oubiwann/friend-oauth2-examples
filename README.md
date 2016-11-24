@@ -6,6 +6,8 @@ Includes [Google OAuth 2.0 Login](https://developers.google.com/accounts/docs/OA
 
 ## Running
 
+For the Github example, you don't need to change any configuration. Just set
+the `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` env vars
 Configure your client id/secret and callback url in the handler code.
 
 ```clojure
@@ -17,10 +19,22 @@ Configure your client id/secret and callback url in the handler code.
 
 At that point, you should be able to start it up using one of the aliases, which will load ring server in headless mode:
 
-    lein appdotnet
-    lein facebook
-    lein github
-    lein google
+```
+$ export GITHUB_CLIENT_ID=xxx
+$ export GITHUB_CALLBACK_DOMAIN=http://localhost:8999
+$ export GITHUB_CALLBACK_PATH=/process-token
+$ GITHUB_CLIENT_SECRET=yyy lein github
+```
+
+and
+
+```
+$ lein appdotnet
+$ lein facebook
+$ lein google
+```
+
+
 
 ## License
 
